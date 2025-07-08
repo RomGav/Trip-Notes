@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Notes</title>
+    <script src="trip-notes.js" defer></script>
+    <link rel="stylesheet" href="trip-notes.css">
+</head>
+<body>
+    <form id="tripNotes">
+        <div class="topBox" id="home">
+            <header>
+                <a href="#home">
+                    <img src="icons/logo.png" alt="Logo" id="logo">
+                </a>
+            </header>
+
+            <div class="valuesContainer">
+                <div class="innerValuesContainer">
+                    <select class="currency">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                    <input type="number" class="converterValue" id="valueOne" min=1 step="0.01" placeholder="Enter amount here.." >
+                </div>
+            
+                <div class="innerValuesContainer">
+                    <select class="currency">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                    <input type="number" class="converterValue" id="valueTwo" min=1 step="0.01" placeholder="Enter amount here.." >
+                </div>
+            </div>
+
+            <p id="errorMessage"></p>
+
+            <div class="labelsContainer">
+                <input type="text" class="converterLabel" id="labelText" placeholder="Enter label here..">
+                <input type="url" class="converterLabel" id="linkText" placeholder="Enter optional link here..">
+            </div>
+
+            <br>
+
+            <div class="labelsContainer">
+                <input type="text" class="converterLabel" id="noteText" placeholder="Enter optional note here..">
+           
+            </div>
+
+            <br>
+
+            <div class="btnContainer">
+                <button class="btnForm" type="submit" id="svBtn">Save as Note</button>
+                <button class="btnForm" type="reset" id="clearBtn">Clear</button>
+          </div>
+        </div>
+    </form>
+
+    <div class="bottomBox">
+        <div class="tempNote">
+            <h2>
+                Instructions 
+            </h2>
+            <ol>
+                <li>
+                    Select the currencies you would like to convert.
+                </li> 
+
+                <br>
+                
+                <li>
+                    Enter a label for your conversion.
+                </li>
+
+                <br>
+
+                <li>
+                    Enter an optional link for your note.
+                </li>
+
+                <br>
+
+                <li>
+                    Enter an optional note to add more details.
+                </li>
+
+                <br>
+                
+                <li>
+                    Click <i><u>Save as Note</u></i> to save your conversion.
+                </li>
+
+                <br>
+
+                <li>
+                    Press the logo to scroll back to the top.
+                </li>
+            </ol>
+            
+            <div class="closeBtn" id="tempBtnContainer">
+                <button type="submit" id = "tempBtn">X</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="conversion">
+            <p class="recentConversion" id="conversionLabel"></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,164 @@
+body {
+    background-color: #8bb3da;
+    margin: 0%;
+    padding: 0%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* height: 200vh; */
+}
+
+header {
+    background-color: #dab18b;
+    text-align: center;
+    width: 100vw;
+    padding: 0;
+    position: fixed;
+    z-index: 1;
+}
+
+#logo {
+    width: 20%;
+    vertical-align: middle;
+
+}
+
+.topBox {
+    background-color: #dab18b;
+    text-align: center;
+}
+
+.valuesContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 8%;   
+}
+
+.currency {
+    overflow: hidden;
+    width: 33%;
+    height: 100%;
+    font-size: x-large;
+}
+
+.converterValue {
+    width: 61.5%;
+    font-size: x-large;
+}
+
+#errorMessage {
+    color: red;
+    font-weight: bold;
+    font-size: x-large;
+    margin-top: 1%;
+}
+
+.labelsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:1%;
+}
+
+.converterLabel{
+    font-size: x-large;
+    width:476px
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    gap:1%;
+    padding-bottom: 1%;
+}
+
+.btnForm {
+    font-size: x-large;
+    width: 174px;
+}
+
+.bottomBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 1.5%;
+    row-gap: 25px;
+    padding-bottom: 6%;
+}
+
+.tempNote {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    width: 20%;
+    transition: transform 0.3s ease;
+}
+
+.tempNote h2 {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.savedNote {    
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    width: 20%;
+    height: 180px;
+    transition: transform 0.3s ease;
+}
+
+.savedNote h2 {
+    text-align: center;
+}
+
+.savedNote h3 {
+    display: none;
+}
+
+.savedNote p {
+    text-align: center;
+}
+
+.closeBtn {
+    position: relative;
+    left: 100.1%;
+    bottom: 110%;
+    padding: 0%;
+    margin: 0%;
+}
+
+.closeBtn button {
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 30px;
+}
+
+#tempBtnContainer {
+    bottom: 100%;
+}
+
+.closeBtn button:hover {
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: salmon;
+}
+
+footer {
+    background-color: #689cda;
+    text-align: center;
+    width: 100vw;
+    height: 8vh;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+#conversionLabel {
+    font-size: x-large;
+    font-weight: bold;
+}
