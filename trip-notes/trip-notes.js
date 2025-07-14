@@ -16,48 +16,53 @@ const allSavedNotes = document.querySelectorAll(`.savedNote`);
 const tempNote = document.querySelector(`.tempNote`);
 const totalAmount = document.querySelector(`.totalAmount`);
 const conversionLabel = document.querySelector(`#conversionLabel`);
-const API_KEY = `e990c7feac36bda1a4a786d68737ed4e`;
-// Extra API Keys
-// `15436e4daf90d72b528f0278911bafd8`;
-// `f53a013080c7ccd4e1169aa64a8d9a06`;
-// `89dccda9487998421f44a28eaded2ae7`;
-// `634798b90a6793362e192d25d9473190`;
-// `f9ba900d9ea13678172bd1c94b7a3f46`;
-// `b3aceca29d6f7010e13662e60bd889e7`;
-const API_URL = `https://api.exchangeratesapi.io/v1/latest?access_key=${API_KEY}`;
+const API_URL = `https://api.frankfurter.app/latest`;
 let options = ``;
 
-async function currency () {
-    const res = await fetch(API_URL);
+async function currency() {
+    const res = await fetch("https://api.frankfurter.app/currencies");
     const data = await res.json();
 
-    const arrKeys = Object.keys(data.rates);
-    const rates = data.rates;
-    arrKeys.map(item => {
-        return options += `<option value = ${item}>${item}</option>`
+    const currencyCodes = Object.keys(data);
+
+    // Create options with a default
+    let options = `<option disabled selected value="">Select a currency</option>`;
+    currencyCodes.forEach(code => {
+        options += `<option value="${code}">${code} - ${data[code]}</option>`;
     });
 
-    for(let i=0; i < select.length; i++) {
-        select[i].innerHTML=options;
-    };
-
-    value1.addEventListener(`keyup`, () => {
-        value2.value = Math.round(((value1.value * rates[select[1].value] / rates[select[0].value]) + Number.EPSILON) * 100) /100;
+    // Populate both select elements
+    select.forEach(sel => {
+        sel.innerHTML = options;
     });
 
-    value2.addEventListener(`keyup`, () => {
-        value1.value = Math.round((( value2.value * rates[select[0].value] / rates[select[1].value]) + Number.EPSILON) * 100) /100;
+    // Helper: Only convert if both currencies are selected and values are valid
+    async function convert(from, to, amount, targetInput) {
+        if (!from || !to || isNaN(amount) || !amount) return;
+        const url = `https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`;
+        const response = await fetch(url);
+        const result = await response.json();
+        targetInput.value = Math.round((result.rates[to] + Number.EPSILON) * 100) / 100;
+    }
+
+    // Conversion event listeners
+    value1.addEventListener("keyup", () => {
+        convert(select[0].value, select[1].value, value1.value, value2);
     });
 
-    select[0].addEventListener(`change`, () => {
-        value2.value = Math.round(((value1.value * rates[select[1].value] / rates[select[0].value]) + Number.EPSILON) * 100) /100;
+    value2.addEventListener("keyup", () => {
+        convert(select[1].value, select[0].value, value2.value, value1);
     });
 
-    select[1].addEventListener(`change`, () => {
-        value2.value = Math.round(((value1.value * rates[select[1].value] / rates[select[0].value]) + Number.EPSILON) * 100) /100;
+    select[0].addEventListener("change", () => {
+        convert(select[0].value, select[1].value, value1.value, value2);
     });
-};
-x
+
+    select[1].addEventListener("change", () => {
+        convert(select[0].value, select[1].value, value1.value, value2);
+    });
+}
+
 currency ()
 
 function clear () {
