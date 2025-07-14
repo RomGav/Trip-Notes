@@ -1,2 +1,1 @@
-# Trip-Notes
-A travel-planning budgeting app that features currency conversion, note cards, and hyperlinks
+A travel-planning budgeting app designed to showcase your saved plans in individual notecards. Features include: currency conversion, note adding and deleting, and attached hyperlinks to individual notes
